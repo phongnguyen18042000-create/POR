@@ -77,6 +77,84 @@
   object-fit: cover;
 }
 
+/* Nút bật/tắt tiếng nhỏ gọn (thay cho thanh điều khiển) */
+.showreel-mute {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: all 0.25s ease;
+}
+
+.showreel-mute:hover {
+  background: rgba(194, 164, 255, 0.3);
+  border-color: var(--accentColor);
+  transform: scale(1.08);
+}
+
+/* Nhãn "Bật tiếng" hiện cạnh nút khi cần nhắc */
+.showreel-mute {
+  gap: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.showreel-mute-label {
+  max-width: 0;
+  opacity: 0;
+  font-size: 14px;
+  font-weight: 500;
+  transition: max-width 0.35s ease, opacity 0.35s ease, margin 0.35s ease;
+}
+
+/* Trạng thái nhắc: nút phình ra kèm chữ + nhấp nháy nhẹ */
+.showreel-mute--hint {
+  width: auto;
+  padding: 0 18px;
+  gap: 8px;
+  border-radius: 24px;
+  background: rgba(194, 164, 255, 0.22);
+  border-color: var(--accentColor);
+  animation: showreelPulse 1.8s ease-in-out infinite;
+}
+
+.showreel-mute--hint .showreel-mute-label {
+  max-width: 120px;
+  opacity: 1;
+}
+
+@keyframes showreelPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(194, 164, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(194, 164, 255, 0);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .showreel-mute {
+    right: 14px;
+    bottom: 14px;
+    width: 42px;
+    height: 42px;
+    font-size: 16px;
+  }
+}
+
 /* Responsive */
 @media screen and (max-width: 900px) {
   .techstack-new {

@@ -45,6 +45,14 @@
   opacity: 0;
 }
 
+.loading-wrap.loading-ready {
+  cursor: pointer;
+}
+
+.loading-wrap.loading-ready:hover {
+  transform: scale(1.04);
+}
+
 .loading-wrap {
   --Lsize: 145px;
   padding: 6px;

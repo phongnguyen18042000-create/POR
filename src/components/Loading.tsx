@@ -43,14 +43,15 @@ const Loading = ({ percent }: { percent: number }) => {
     return () => clearTimeout(timer);
   }, [typedText, isDeleting]);
 
-  if (percent >= 100) {
-    setTimeout(() => {
-      setLoaded(true);
-      setTimeout(() => {
-        setIsLoaded(true);
-      }, 1000);
-    }, 600);
+  if (percent >= 100 && !loaded) {
+    setTimeout(() => setLoaded(true), 600);
   }
+
+  // Vào trang bằng 1 cú click — cú click này đồng thời mở khóa âm thanh
+  // (trình duyệt bắt buộc có tương tác thật thì video mới được phát tiếng).
+  const handleEnter = () => {
+    if (loaded && !isLoaded) setIsLoaded(true);
+  };
 
   useEffect(() => {
     import("./utils/initialFX").then((module) => {
@@ -101,8 +102,9 @@ const Loading = ({ percent }: { percent: number }) => {
           </Marquee>
         </div>
         <div
-          className={`loading-wrap ${clicked && "loading-clicked"}`}
+          className={`loading-wrap ${clicked && "loading-clicked"} ${loaded && "loading-ready"}`}
           onMouseMove={(e) => handleMouseMove(e)}
+          onClick={handleEnter}
         >
           <div className="loading-hover"></div>
           <div className={`loading-button ${loaded && "loading-complete"}`}>
@@ -115,7 +117,7 @@ const Loading = ({ percent }: { percent: number }) => {
               <div className="loading-box"></div>
             </div>
             <div className="loading-content2">
-              <span>Chào mừng</span>
+              <span>Bấm để vào</span>
             </div>
           </div>
         </div>
