@@ -1,0 +1,41 @@
+.section-container {
+  width: 1300px;
+}
+
+.title,
+.para {
+  font-kerning: normal;
+  -webkit-text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  word-spacing: 0.15em;
+}
+
+@media only screen and (max-width: 1600px) {
+  .section-container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 40px;
+    box-sizing: border-box;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .section-container {
+    max-width: 1000px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .section-container {
+    max-width: 100%;
+    padding: 0 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .section-container {
+    padding: 0 20px;
+  }
+}

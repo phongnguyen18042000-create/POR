@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgOS" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#1a1410"/>
+    </linearGradient>
+    <radialGradient id="warmGlow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#d97757" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#d97757" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bgOS)"/>
+  <circle cx="640" cy="400" r="500" fill="url(#warmGlow)"/>
+
+  <g opacity="0.06" stroke="#d4b896" stroke-width="1" fill="none">
+    <path d="M0,160 L1280,160 M0,320 L1280,320 M0,480 L1280,480 M0,640 L1280,640"/>
+  </g>
+
+  <g transform="translate(40,32)">
+    <rect width="1200" height="60" rx="12" fill="#ffffff08" stroke="#d4b89630"/>
+    <circle cx="24" cy="30" r="6" fill="#ff5f57"/>
+    <circle cx="48" cy="30" r="6" fill="#febc2e"/>
+    <circle cx="72" cy="30" r="6" fill="#28c840"/>
+    <rect x="120" y="18" width="900" height="24" rx="12" fill="#ffffff10"/>
+    <text x="140" y="35" font-family="ui-monospace, Menlo, monospace" font-size="14" fill="#9ca3af">~/HUSSIO_BRAND_OS</text>
+  </g>
+
+  <g transform="translate(80,140)" font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="15">
+    <text fill="#86efac">$ tree HUSSIO_BRAND_OS</text>
+    <g transform="translate(0,28)" fill="#d4b896">
+      <text y="0">HUSSIO_BRAND_OS/</text>
+      <text y="24">├── 00_Brand_DNA/         <tspan fill="#64748b">brand voice · tone · USP</tspan></text>
+      <text y="48">├── 01_Lookbook_Prompts/  <tspan fill="#64748b">ChatGPT GPT-Image prompts</tspan></text>
+      <text y="72">├── 02_Caption_System/    <tspan fill="#64748b">Facebook · Tiktok · IG</tspan></text>
+      <text y="96">├── 03_Competitor_Intel/  <tspan fill="#64748b">SWOT · BMC · Metric data</tspan></text>
+      <text y="120">├── 04_Skills_Claude/     <tspan fill="#64748b">custom skills · workflows</tspan></text>
+      <text y="144">└── 05_Image_OS/          <tspan fill="#64748b">moodboard · model refs</tspan></text>
+    </g>
+  </g>
+
+  <g transform="translate(820,360)" text-anchor="end" font-family="-apple-system, Inter, sans-serif">
+    <text y="0" font-size="22" font-weight="500" fill="#d97757" letter-spacing="4">CLAUDE CODE · SKILL OS</text>
+    <text y="76" font-size="84" font-weight="800" fill="#ffffff" letter-spacing="-2">HUSSIO</text>
+    <text y="146" font-size="84" font-weight="800" fill="#d97757" letter-spacing="-2">Brand OS</text>
+    <text y="200" font-size="20" fill="#cbd5e1">Hệ tri thức brand nội bộ</text>
+    <text y="226" font-size="20" fill="#cbd5e1">vận hành bằng AI</text>
+  </g>
+
+  <g transform="translate(80,640)" font-size="14" font-weight="500" font-family="-apple-system, Inter, sans-serif" fill="#ffffff">
+    <g transform="translate(0,0)">
+      <rect x="0" y="0" width="120" height="36" rx="18" fill="#ffffff10" stroke="#d4b89640"/>
+      <text x="60" y="24" text-anchor="middle">Claude Code</text>
+    </g>
+    <g transform="translate(132,0)">
+      <rect x="0" y="0" width="110" height="36" rx="18" fill="#ffffff10" stroke="#d4b89640"/>
+      <text x="55" y="24" text-anchor="middle">Markdown</text>
+    </g>
+    <g transform="translate(254,0)">
+      <rect x="0" y="0" width="160" height="36" rx="18" fill="#ffffff10" stroke="#d4b89640"/>
+      <text x="80" y="24" text-anchor="middle">Custom Skills</text>
+    </g>
+    <g transform="translate(426,0)">
+      <rect x="0" y="0" width="180" height="36" rx="18" fill="#ffffff10" stroke="#d4b89640"/>
+      <text x="90" y="24" text-anchor="middle">Prompt Engineering</text>
+    </g>
+  </g>
+
+  <g transform="translate(80,720)" font-family="ui-monospace, Menlo, monospace" fill="#64748b" font-size="13">
+    <text>github.com/HuaThinhHung/HUSSIO_BRAND_OS</text>
+  </g>
+</svg>

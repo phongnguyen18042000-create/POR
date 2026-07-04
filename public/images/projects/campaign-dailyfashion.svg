@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b080c"/>
+      <stop offset="55%" stop-color="#12101a"/>
+      <stop offset="100%" stop-color="#08070b"/>
+    </linearGradient>
+    <radialGradient id="glow5" cx="30%" cy="38%" r="70%">
+      <stop offset="0%" stop-color="#ff9ecf" stop-opacity="0.28"/>
+      <stop offset="60%" stop-color="#c2a4ff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ff9ecf" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad5" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ff9ecf"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="800" fill="url(#bg5)"/>
+  <rect width="1280" height="800" fill="url(#glow5)"/>
+
+  <!-- film grain lines -->
+  <g opacity="0.05" stroke="#ff9ecf" stroke-width="1" fill="none">
+    <path d="M0,200 L1280,200 M0,400 L1280,400 M0,600 L1280,600"/>
+  </g>
+
+  <!-- cinematic letterbox bars -->
+  <rect x="0" y="0" width="1280" height="70" fill="#000000" opacity="0.55"/>
+  <rect x="0" y="730" width="1280" height="70" fill="#000000" opacity="0.55"/>
+
+  <!-- sprocket holes (film strip) -->
+  <g fill="#ff9ecf" opacity="0.35">
+    <rect x="40" y="26" width="26" height="18" rx="4"/>
+    <rect x="110" y="26" width="26" height="18" rx="4"/>
+    <rect x="180" y="26" width="26" height="18" rx="4"/>
+    <rect x="250" y="26" width="26" height="18" rx="4"/>
+    <rect x="320" y="26" width="26" height="18" rx="4"/>
+    <rect x="390" y="26" width="26" height="18" rx="4"/>
+    <rect x="460" y="26" width="26" height="18" rx="4"/>
+    <rect x="530" y="26" width="26" height="18" rx="4"/>
+    <rect x="600" y="26" width="26" height="18" rx="4"/>
+    <rect x="670" y="26" width="26" height="18" rx="4"/>
+    <rect x="740" y="26" width="26" height="18" rx="4"/>
+    <rect x="810" y="26" width="26" height="18" rx="4"/>
+    <rect x="880" y="26" width="26" height="18" rx="4"/>
+    <rect x="950" y="26" width="26" height="18" rx="4"/>
+    <rect x="1020" y="26" width="26" height="18" rx="4"/>
+    <rect x="1090" y="26" width="26" height="18" rx="4"/>
+    <rect x="1160" y="26" width="26" height="18" rx="4"/>
+    <rect x="1230" y="26" width="26" height="18" rx="4"/>
+  </g>
+
+  <!-- brand tag -->
+  <g transform="translate(80,120)">
+    <rect x="0" y="0" width="150" height="40" rx="20" fill="#ff9ecf" opacity="0.14" stroke="#ff9ecf" stroke-opacity="0.5"/>
+    <text x="75" y="27" font-family="Poppins, Arial, sans-serif" font-size="20" font-weight="700" fill="#ff9ecf" text-anchor="middle" letter-spacing="3">HUSSIO</text>
+  </g>
+
+  <!-- title -->
+  <g transform="translate(80,300)" font-family="Poppins, Arial, sans-serif" font-weight="800">
+    <text x="0" y="0" font-size="118" fill="#ffffff" letter-spacing="-2">DAILY</text>
+    <text x="0" y="128" font-size="118" fill="url(#titleGrad5)" letter-spacing="-2">FASHION</text>
+  </g>
+
+  <!-- category -->
+  <text x="82" y="640" font-family="Poppins, Arial, sans-serif" font-size="30" font-weight="500" fill="#d7d2e6" letter-spacing="6" opacity="0.85">CONTENT SERIES</text>
+
+  <!-- play button -->
+  <g transform="translate(1060,420)">
+    <circle cx="0" cy="0" r="80" fill="#ff9ecf" opacity="0.12"/>
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#ff9ecf" stroke-width="2" stroke-opacity="0.6"/>
+    <path d="M-24,-34 L44,0 L-24,34 Z" fill="#ff9ecf"/>
+  </g>
+
+  <!-- credit -->
+  <text x="1200" y="700" font-family="ui-monospace, Menlo, monospace" font-size="20" fill="#8a84a0" text-anchor="end" letter-spacing="2">dir. Minh Phương</text>
+</svg>

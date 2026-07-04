@@ -1,0 +1,104 @@
+.techstack-new {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 100px 0;
+  background: #0b080c;
+}
+
+/* Centered heading block */
+.showreel-header {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Ambient glow behind the showreel */
+.techstack-new::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 70%;
+  background: radial-gradient(ellipse at center, rgba(194, 164, 255, 0.22) 0%, rgba(194, 164, 255, 0) 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.showreel-header h2 {
+  font-size: 70px;
+  text-align: center;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #c2a4ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.showreel-sub {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  margin-bottom: 45px;
+  letter-spacing: 0.5px;
+}
+
+/* Full-bleed showreel — chạm sát 2 mép trái–phải */
+.showreel-frame {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid rgba(194, 164, 255, 0.22);
+  border-bottom: 1px solid rgba(194, 164, 255, 0.22);
+  box-shadow: 0 0 100px rgba(194, 164, 255, 0.25);
+  background: #000;
+  line-height: 0;
+}
+
+.showreel-video {
+  display: block;
+  width: 100%;
+  max-height: 90vh;
+  object-fit: cover;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .techstack-new {
+    padding: 70px 0;
+  }
+
+  .showreel-header h2 {
+    font-size: 50px;
+  }
+
+  .showreel-sub {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .showreel-video {
+    max-height: 70vh;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .showreel-header h2 {
+    font-size: 38px;
+  }
+}
