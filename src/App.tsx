@@ -30,7 +30,7 @@ const App = () => {
         <Route
           path="/myworks"
           element={
-            <Suspense fallback={<div>Đang tải...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
               <MyWorks />
             </Suspense>
           }
@@ -38,7 +38,7 @@ const App = () => {
         <Route
           path="/play"
           element={
-            <Suspense fallback={<div>Đang tải...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
               <Play />
             </Suspense>
           }

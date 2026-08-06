@@ -111,13 +111,13 @@ const Loading = ({ percent }: { percent: number }) => {
             <div className="loading-container">
               <div className="loading-content">
                 <div className="loading-content-in">
-                  Đang tải <span>{percent}%</span>
+                  Loading <span>{percent}%</span>
                 </div>
               </div>
               <div className="loading-box"></div>
             </div>
             <div className="loading-content2">
-              <span>Bấm để vào</span>
+              <span>Click to enter</span>
             </div>
           </div>
         </div>

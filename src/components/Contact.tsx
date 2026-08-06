@@ -70,7 +70,7 @@ const Contact = () => {
             </p>
             {config.contact.phone && (
               <>
-                <h4>Điện thoại</h4>
+                <h4>Phone</h4>
                 <p>
                   <a href={`tel:${config.contact.phone}`} data-cursor="disable">
                     {config.contact.phone}
@@ -78,13 +78,13 @@ const Contact = () => {
                 </p>
               </>
             )}
-            <h4>Địa điểm</h4>
+            <h4>Location</h4>
             <p>
               <span>{config.social.location}</span>
             </p>
           </div>
           <div className="contact-box">
-            <h4>Mạng xã hội</h4>
+            <h4>Social</h4>
             {config.contact.github && (
               <a
                 href={config.contact.github}
@@ -132,7 +132,7 @@ const Contact = () => {
           </div>
           <div className="contact-box">
             <h2>
-              Thiết kế và phát triển <br /> bởi <span>{config.developer.fullName}</span>
+              Designed & developed <br /> by <span>{config.developer.fullName}</span>
             </h2>
             <h5>
               <MdCopyright /> {new Date().getFullYear()}

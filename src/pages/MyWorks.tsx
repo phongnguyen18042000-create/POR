@@ -9,12 +9,12 @@ const MyWorks = () => {
     <div className="myworks-page">
       <div className="myworks-header">
         <Link to="/" className="back-button" data-cursor="disable">
-          ← Quay lại trang chủ
+          ← Back to home
         </Link>
         <h1>
-          Tất cả <span>Dự án</span>
+          All <span>Projects</span>
         </h1>
-        <p>Tổng hợp toàn bộ dự án và sản phẩm tôi đã thực hiện</p>
+        <p>A complete collection of the projects and work I've done</p>
       </div>
 
       <div className="myworks-grid">
@@ -55,7 +55,7 @@ const MyWorks = () => {
                     className="myworks-link myworks-link-demo"
                     data-cursor="disable"
                   >
-                    Xem video <MdArrowOutward />
+                    Watch video <MdArrowOutward />
                   </a>
                 )}
               </div>

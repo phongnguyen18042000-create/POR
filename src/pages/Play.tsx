@@ -125,9 +125,9 @@ When appropriate, end with one of these:
 
 // Quick suggestion buttons for the chat
 const QUICK_SUGGESTIONS = [
-  "Cho tôi xem các campaign nổi bật",
-  "Phương dùng công cụ gì?",
-  "Phương có nhận dự án freelance không?"
+  "Show me your best campaigns",
+  "What tools does Phương use?",
+  "Is Phương available for freelance?"
 ];
 
 const Play = () => {
@@ -146,7 +146,7 @@ const Play = () => {
 
   // Chat state
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
-    { role: 'assistant', content: 'Xin chào! 👋 Chào mừng tới portfolio của Phương. Tôi có thể chia sẻ về các campaign HUSSIO, công cụ hoặc kinh nghiệm làm việc của Phương. Bạn muốn biết điều gì?' }
+    { role: 'assistant', content: "Hi! 👋 Welcome to Phương's portfolio. I can share HUSSIO campaigns, tools, or Phương's work experience. What would you like to know?" }
   ]);
   const [chatInput, setChatInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -156,16 +156,16 @@ const Play = () => {
 
   const updateGameStatus = useCallback((g: Chess) => {
     if (g.isCheckmate()) {
-      setGameStatus(g.turn() === 'w' ? 'Chiếu hết! Quân đen thắng!' : 'Chiếu hết! Quân trắng thắng!');
+      setGameStatus(g.turn() === 'w' ? 'Checkmate! Black wins!' : 'Checkmate! White wins!');
     } else if (g.isDraw()) {
-      if (g.isStalemate()) setGameStatus('Hòa cờ - hết nước đi');
-      else if (g.isThreefoldRepetition()) setGameStatus('Hòa do lặp nước 3 lần');
-      else if (g.isInsufficientMaterial()) setGameStatus('Hòa do không đủ quân');
-      else setGameStatus('Hòa');
+      if (g.isStalemate()) setGameStatus('Stalemate - no moves left');
+      else if (g.isThreefoldRepetition()) setGameStatus('Draw by threefold repetition');
+      else if (g.isInsufficientMaterial()) setGameStatus('Draw by insufficient material');
+      else setGameStatus('Draw');
     } else if (g.isCheck()) {
-      setGameStatus(g.turn() === 'w' ? 'Quân trắng đang bị chiếu!' : 'Quân đen đang bị chiếu!');
+      setGameStatus(g.turn() === 'w' ? 'White is in check!' : 'Black is in check!');
     } else {
-      setGameStatus(g.turn() === 'w' ? "Lượt quân trắng" : "Lượt quân đen");
+      setGameStatus(g.turn() === 'w' ? "White to move" : "Black to move");
     }
   }, []);
 
@@ -273,14 +273,14 @@ const Play = () => {
     setCapturedWhite([]);
     setCapturedBlack([]);
     setLastMove(null);
-    setGameStatus("Lượt quân trắng");
+    setGameStatus("White to move");
     setBoardFlipped(false);
   };
 
   const flipBoard = () => {
     // If game is in progress, ask to start new game
     if (moveHistory.length > 0) {
-      if (window.confirm('Bắt đầu ván mới?')) {
+      if (window.confirm('Start a new game?')) {
         resetGame();
         setBoardFlipped(!boardFlipped);
       }
@@ -332,7 +332,7 @@ const Play = () => {
       console.error('Chat error:', error);
       const errorMessage: ChatMessage = {
         role: 'assistant',
-        content: 'Xin lỗi, có chút trục trặc kết nối. Bạn thử lại nhé? 😅'
+        content: 'Sorry, there was a connection hiccup. Please try again? 😅'
       };
       setChatMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -388,7 +388,7 @@ const Play = () => {
       {/* Header */}
       <div className="play-header">
         <Link to="/" className="back-button" data-cursor="disable">
-          ← Quay lại trang chủ
+          ← Back to home
         </Link>
       </div>
 
@@ -396,7 +396,7 @@ const Play = () => {
         {/* Chat Panel - Left Side */}
         <div className="chat-panel">
           <div className="chat-header">
-            <span className="chat-title"><FaComments style={{ color: '#fff' }} /> Trò chuyện cùng tôi</span>
+            <span className="chat-title"><FaComments style={{ color: '#fff' }} /> Chat with me</span>
           </div>
           <div className="chat-messages">
             {chatMessages.map((msg, index) => (
@@ -430,7 +430,7 @@ const Play = () => {
             <input
               type="text"
               className="chat-input"
-              placeholder="Nhập tin nhắn..."
+              placeholder="Type a message..."
               value={chatInput}
               onChange={(e) => setChatInput(e.target.value)}
               onKeyPress={handleKeyPress}
@@ -452,7 +452,7 @@ const Play = () => {
               </div>
               <div className="player-details">
                 <span className="player-name">Nguyễn Minh Phương</span>
-                <span className="player-rating">{engineThinking ? '🤔 Đang suy nghĩ...' : 'ELO 3640'}</span>
+                <span className="player-rating">{engineThinking ? '🤔 Thinking...' : 'ELO 3640'}</span>
               </div>
             </div>
             <div className="captured-pieces">
@@ -512,8 +512,8 @@ const Play = () => {
                 <span>👤</span>
               </div>
               <div className="player-details">
-                <span className="player-name">Bạn</span>
-                <span className="player-rating">{playerColor === 'w' ? 'Quân trắng' : 'Quân đen'}</span>
+                <span className="player-name">You</span>
+                <span className="player-rating">{playerColor === 'w' ? 'White' : 'Black'}</span>
               </div>
             </div>
             <div className="captured-pieces">
@@ -531,7 +531,7 @@ const Play = () => {
 
           {/* Move History */}
           <div className="move-history">
-            <div className="move-history-header">Nước đi</div>
+            <div className="move-history-header">Moves</div>
             <div className="move-history-list">
               {formatMoveHistory().map((move, index) => (
                 <div key={index} className="move-row">
@@ -546,10 +546,10 @@ const Play = () => {
           {/* Controls */}
           <div className="game-controls">
             <button onClick={resetGame} className="control-btn" data-cursor="disable">
-              Ván mới
+              New game
             </button>
             <button onClick={flipBoard} className="control-btn" data-cursor="disable">
-              Xoay bàn cờ
+              Flip board
             </button>
           </div>
         </div>

@@ -8,8 +8,19 @@ const TechStackNew = () => {
   const frameRef = useRef<HTMLDivElement>(null);
   const [muted, setMuted] = useState(true);
   const [inView, setInView] = useState(false);
+  // Điện thoại → video dọc, PC/desktop → video ngang
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 768px)").matches
+  );
   const userMuted = useRef(false); // người dùng chủ động tắt tiếng thì tôn trọng
   const curVol = useRef(0);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   // Trình duyệt CHỈ cho mở tiếng khi có tương tác "thật" (click/chạm/gõ phím).
   // LƯU Ý: cuộn (wheel/scroll) KHÔNG được tính → không dùng để mở tiếng,
@@ -83,33 +94,40 @@ const TechStackNew = () => {
   return (
     <div className="techstack-new">
       <div className="showreel-header">
-        <h2>Video của tôi</h2>
-        <p className="showreel-sub">Một vài thước phim tôi đã thực hiện</p>
+        <h2>My Videos</h2>
+        <p className="showreel-sub">A few films I've made</p>
       </div>
 
       <div className="showreel-frame" ref={frameRef}>
         <video
+          key={isMobile ? "mobile" : "desktop"}
           ref={videoRef}
           className="showreel-video"
           autoPlay
           loop
           muted
           playsInline
-          poster="/images/projects/showreel-poster.jpg"
+          poster={
+            isMobile
+              ? "/images/projects/showreel-mobile-poster.jpg"
+              : "/images/projects/showreel-poster.jpg"
+          }
         >
-          <source src="/video/showreel.mp4" type="video/mp4" />
-          <source src="/video/video.webm" type="video/webm" />
+          <source
+            src={isMobile ? "/video/showreel-mobile.mp4" : "/video/showreel.mp4"}
+            type="video/mp4"
+          />
         </video>
 
         <button
           className={`showreel-mute ${hint ? "showreel-mute--hint" : ""}`}
           onClick={toggleMute}
-          aria-label={muted ? "Bật tiếng" : "Tắt tiếng"}
-          title={muted ? "Bật tiếng" : "Tắt tiếng"}
+          aria-label={muted ? "Unmute" : "Mute"}
+          title={muted ? "Unmute" : "Mute"}
           data-cursor="disable"
         >
           {muted ? <FaVolumeXmark /> : <FaVolumeHigh />}
-          {hint && <span className="showreel-mute-label">Bật tiếng</span>}
+          {hint && <span className="showreel-mute-label">Unmute</span>}
         </button>
       </div>
     </div>

@@ -36,9 +36,9 @@ const WhatIDo = () => {
     <div className="whatIDO">
       <div className="what-box">
         <h2 className="what-title">
-          TÔI <span className="hat-h2">LÀM</span>{" "}
+          WHAT <span className="hat-h2">I</span>{" "}
           <div>
-            G<span className="do-h2">Ì</span>
+            D<span className="do-h2">O</span>
           </div>
         </h2>
       </div>
@@ -100,7 +100,7 @@ const WhatIDo = () => {
               <p>
                 {config.skills.develop.details}
               </p>
-              <h5>Kỹ năng & công cụ</h5>
+              <h5>Skills & tools</h5>
               <div className="what-content-flex">
                 {config.skills.develop.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>
@@ -109,7 +109,7 @@ const WhatIDo = () => {
               <div
                 className="what-arrow"
                 onClick={(e) => handleArrowClick(e, 0)}
-                title="Bấm để xem chi tiết"
+                title="Tap to see details"
               ></div>
             </div>
           </div>
@@ -137,7 +137,7 @@ const WhatIDo = () => {
               <p>
                 {config.skills.design.details}
               </p>
-              <h5>Kỹ năng & công cụ</h5>
+              <h5>Skills & tools</h5>
               <div className="what-content-flex">
                 {config.skills.design.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>
@@ -146,7 +146,7 @@ const WhatIDo = () => {
               <div
                 className="what-arrow"
                 onClick={(e) => handleArrowClick(e, 1)}
-                title="Bấm để xem chi tiết"
+                title="Tap to see details"
               ></div>
             </div>
           </div>

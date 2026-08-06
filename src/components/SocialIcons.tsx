@@ -5,9 +5,7 @@ import {
   FaYoutube,
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
-import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
-import HoverLinks from "./HoverLinks";
 import { config } from "../config";
 
 const SocialIcons = () => {
@@ -89,12 +87,6 @@ const SocialIcons = () => {
           </span>
         )}
       </div>
-      <a className="resume-button" href="/MinhPhuong-CV.pdf" target="_blank" rel="noopener noreferrer" download>
-        <HoverLinks text="CV CỦA TÔI" />
-        <span>
-          <TbNotes />
-        </span>
-      </a>
     </div>
   );
 };

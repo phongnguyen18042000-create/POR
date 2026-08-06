@@ -14,13 +14,13 @@ const Landing = ({ children }: PropsWithChildren) => {
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
           <div className="landing-intro">
-            <h2>Xin chào! Tôi là</h2>
+            <h2>Hello! I'm</h2>
             <h1>
               {firstName.toUpperCase()} {lastName && <span>{lastName.toUpperCase()}</span>}
             </h1>
           </div>
           <div className="landing-info">
-            <h3>Là một</h3>
+            <h3>I'm a</h3>
             <h2 className="landing-info-h2">{config.developer.title}</h2>
           </div>
 

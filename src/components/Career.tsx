@@ -6,8 +6,8 @@ const Career = () => {
     <div className="career-section section-container">
       <div className="career-container">
         <h2>
-          Hành trình <span>&</span>
-          <br /> kinh nghiệm
+          Journey <span>&</span>
+          <br /> experience
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -20,7 +20,7 @@ const Career = () => {
                   <h4>{exp.position}</h4>
                   <h5>{exp.company}</h5>
                 </div>
-                <h3>{exp.period.toLowerCase().includes("hiện tại") || exp.period.includes("Present") ? "HIỆN TẠI" : exp.period.split(" - ")[0]}</h3>
+                <h3>{exp.period.toLowerCase().includes("hiện tại") || exp.period.includes("Present") ? "PRESENT" : exp.period.split(" - ")[0]}</h3>
               </div>
               <p>{exp.description}</p>
             </div>

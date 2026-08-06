@@ -115,17 +115,17 @@ const Navbar = () => {
         <ul>
           <li>
             <a data-href="#about" href="#about">
-              <HoverLinks text="VỀ TÔI" />
+              <HoverLinks text="ABOUT" />
             </a>
           </li>
           <li>
             <a data-href="#work" href="#work">
-              <HoverLinks text="DỰ ÁN" />
+              <HoverLinks text="WORK" />
             </a>
           </li>
           <li>
             <a data-href="#contact" href="#contact">
-              <HoverLinks text="LIÊN HỆ" />
+              <HoverLinks text="CONTACT" />
             </a>
           </li>
         </ul>
