@@ -32,3 +32,4 @@ redoxchess-engine/
 
 # Local dev config (đường dẫn máy cá nhân)
 .claude/
+.env*

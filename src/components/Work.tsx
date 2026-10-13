@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { config } from "../config";
-import { Link } from "react-router-dom";
 import { FaGithub } from "react-icons/fa6";
 import { MdArrowOutward } from "react-icons/md";
 
@@ -113,9 +112,15 @@ const Work = () => {
             <div className="see-all-works">
               <h3>Want to see more?</h3>
               <p>Explore all my projects and work</p>
-              <Link to="/myworks" className="see-all-btn" data-cursor="disable">
+              <a
+                href="https://drive.google.com/drive/folders/15ddTf_lZfIbAf7DBxuhH0oL7DN7P3Ts5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="see-all-btn"
+                data-cursor="disable"
+              >
                 View all projects →
-              </Link>
+              </a>
             </div>
           </div>
         </div>
