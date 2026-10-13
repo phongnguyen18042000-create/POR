@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
 import "./styles/WhatIDo.css";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 
 const WhatIDo = () => {
+  const { config, t, lang } = useI18n();
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
   const setRef = (el: HTMLDivElement | null, index: number) => {
     containerRef.current[index] = el;
@@ -36,10 +37,21 @@ const WhatIDo = () => {
     <div className="whatIDO">
       <div className="what-box">
         <h2 className="what-title">
-          WHAT <span className="hat-h2">I</span>{" "}
-          <div>
-            D<span className="do-h2">O</span>
-          </div>
+          {lang === "vi" ? (
+            <>
+              TÔI <span className="hat-h2">LÀM</span>{" "}
+              <div>
+                G<span className="do-h2">Ì</span>
+              </div>
+            </>
+          ) : (
+            <>
+              WHAT <span className="hat-h2">I</span>{" "}
+              <div>
+                D<span className="do-h2">O</span>
+              </div>
+            </>
+          )}
         </h2>
       </div>
       <div className="what-box">
@@ -100,7 +112,7 @@ const WhatIDo = () => {
               <p>
                 {config.skills.develop.details}
               </p>
-              <h5>Skills & tools</h5>
+              <h5>{t.whatido.skills}</h5>
               <div className="what-content-flex">
                 {config.skills.develop.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>
@@ -109,7 +121,7 @@ const WhatIDo = () => {
               <div
                 className="what-arrow"
                 onClick={(e) => handleArrowClick(e, 0)}
-                title="Tap to see details"
+                title={t.whatido.detail}
               ></div>
             </div>
           </div>
@@ -137,7 +149,7 @@ const WhatIDo = () => {
               <p>
                 {config.skills.design.details}
               </p>
-              <h5>Skills & tools</h5>
+              <h5>{t.whatido.skills}</h5>
               <div className="what-content-flex">
                 {config.skills.design.tools.map((tool, index) => (
                   <div key={index} className="what-tags">{tool}</div>
@@ -146,7 +158,7 @@ const WhatIDo = () => {
               <div
                 className="what-arrow"
                 onClick={(e) => handleArrowClick(e, 1)}
-                title="Tap to see details"
+                title={t.whatido.detail}
               ></div>
             </div>
           </div>

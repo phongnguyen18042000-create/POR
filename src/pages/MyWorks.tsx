@@ -1,20 +1,21 @@
 import { Link } from "react-router-dom";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 import { FaGithub } from "react-icons/fa6";
 import { MdArrowOutward } from "react-icons/md";
 import "./MyWorks.css";
 
 const MyWorks = () => {
+  const { config, t } = useI18n();
   return (
     <div className="myworks-page">
       <div className="myworks-header">
         <Link to="/" className="back-button" data-cursor="disable">
-          ← Back to home
+          {t.myworks.back}
         </Link>
         <h1>
-          All <span>Projects</span>
+          {t.myworks.allTitle} <span>{t.myworks.allTitleHl}</span>
         </h1>
-        <p>A complete collection of the projects and work I've done</p>
+        <p>{t.myworks.allDesc}</p>
       </div>
 
       <div className="myworks-grid">
@@ -55,7 +56,7 @@ const MyWorks = () => {
                     className="myworks-link myworks-link-demo"
                     data-cursor="disable"
                   >
-                    Watch video <MdArrowOutward />
+                    {t.myworks.watch} <MdArrowOutward />
                   </a>
                 )}
               </div>

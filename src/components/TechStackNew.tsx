@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
 import "./styles/TechStackNew.css";
+import { useI18n } from "../i18n";
 
 // Showreel section — video do Nguyễn Minh Phương tự thực hiện
 const TechStackNew = () => {
+  const { t } = useI18n();
   const videoRef = useRef<HTMLVideoElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const [muted, setMuted] = useState(true);
@@ -94,8 +96,8 @@ const TechStackNew = () => {
   return (
     <div className="techstack-new">
       <div className="showreel-header">
-        <h2>My Videos</h2>
-        <p className="showreel-sub">A few films I've made</p>
+        <h2>{t.video.heading}</h2>
+        <p className="showreel-sub">{t.video.sub}</p>
       </div>
 
       <div className="showreel-frame" ref={frameRef}>
@@ -122,12 +124,12 @@ const TechStackNew = () => {
         <button
           className={`showreel-mute ${hint ? "showreel-mute--hint" : ""}`}
           onClick={toggleMute}
-          aria-label={muted ? "Unmute" : "Mute"}
-          title={muted ? "Unmute" : "Mute"}
+          aria-label={muted ? t.video.unmute : t.video.mute}
+          title={muted ? t.video.unmute : t.video.mute}
           data-cursor="disable"
         >
           {muted ? <FaVolumeXmark /> : <FaVolumeHigh />}
-          {hint && <span className="showreel-mute-label">Unmute</span>}
+          {hint && <span className="showreel-mute-label">{t.video.unmute}</span>}
         </button>
       </div>
     </div>

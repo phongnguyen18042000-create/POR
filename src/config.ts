@@ -1,4 +1,4 @@
-export const config = {
+export const configEN = {
     developer: {
         name: "Nguyễn Minh Phương",
         fullName: "Nguyễn Minh Phương",
@@ -187,3 +187,5 @@ export const config = {
         }
     }
 };
+
+export type AppConfig = typeof configEN;

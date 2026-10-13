@@ -1,13 +1,14 @@
 import "./styles/Career.css";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 
 const Career = () => {
+  const { config, t } = useI18n();
   return (
     <div className="career-section section-container">
       <div className="career-container">
         <h2>
-          Journey <span>&</span>
-          <br /> experience
+          {t.career.h1} <span>&</span>
+          <br /> {t.career.h2}
         </h2>
         <div className="career-info">
           <div className="career-timeline">
@@ -20,7 +21,7 @@ const Career = () => {
                   <h4>{exp.position}</h4>
                   <h5>{exp.company}</h5>
                 </div>
-                <h3>{exp.period.toLowerCase().includes("hiện tại") || exp.period.includes("Present") ? "PRESENT" : exp.period.split(" - ")[0]}</h3>
+                <h3>{exp.period.toLowerCase().includes("hiện tại") || exp.period.includes("Present") ? t.career.present : exp.period.split(" - ")[0]}</h3>
               </div>
               <p>{exp.description}</p>
             </div>

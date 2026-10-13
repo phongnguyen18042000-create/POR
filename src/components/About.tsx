@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/About.css";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,6 +49,7 @@ const parseHighlights = (text: string) => {
 };
 
 const About = () => {
+  const { config } = useI18n();
   const containerRef = useRef<HTMLDivElement>(null);
   const paraRef = useRef<HTMLParagraphElement>(null);
 

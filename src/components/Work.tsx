@@ -3,13 +3,14 @@ import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 import { FaGithub } from "react-icons/fa6";
 import { MdArrowOutward } from "react-icons/md";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
+  const { config, t } = useI18n();
   useGSAP(() => {
     // Disable pinning on mobile to allow scrolling
     if (window.innerWidth <= 768) return;
@@ -63,7 +64,7 @@ const Work = () => {
     <div className="work-section" id="work">
       <div className="work-container section-container">
         <h2>
-          My <span>work</span>
+          {t.work.h1} <span>{t.work.h2}</span>
         </h2>
         <div className="work-flex">
           {config.projects.slice(0, 5).map((project, index) => (
@@ -77,7 +78,7 @@ const Work = () => {
                     <p>{project.category}</p>
                   </div>
                 </div>
-                <h4>Highlights</h4>
+                <h4>{t.work.highlights}</h4>
                 <p>{project.technologies}</p>
                 <div className="work-links">
                   {project.github && (
@@ -99,7 +100,7 @@ const Work = () => {
                       className="work-link work-link-demo"
                       data-cursor="disable"
                     >
-                      Watch video <MdArrowOutward />
+                      {t.work.watch} <MdArrowOutward />
                     </a>
                   )}
                 </div>
@@ -110,8 +111,8 @@ const Work = () => {
           {/* See All Works Button */}
           <div className="work-box work-box-cta">
             <div className="see-all-works">
-              <h3>Want to see more?</h3>
-              <p>Explore all my projects and work</p>
+              <h3>{t.work.more}</h3>
+              <p>{t.work.moreDesc}</p>
               <a
                 href="https://drive.google.com/drive/folders/15ddTf_lZfIbAf7DBxuhH0oL7DN7P3Ts5"
                 target="_blank"
@@ -119,7 +120,7 @@ const Work = () => {
                 className="see-all-btn"
                 data-cursor="disable"
               >
-                View all projects →
+                {t.work.viewAll}
               </a>
             </div>
           </div>

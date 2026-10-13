@@ -1,6 +1,6 @@
 import { MdArrowOutward, MdCopyright } from "react-icons/md";
 import "./styles/Contact.css";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
@@ -8,6 +8,7 @@ import { useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Contact = () => {
+  const { config, t } = useI18n();
   useEffect(() => {
     const contactTimeline = gsap.timeline({
       scrollTrigger: {
@@ -62,7 +63,7 @@ const Contact = () => {
         <h3>{config.developer.fullName}</h3>
         <div className="contact-flex">
           <div className="contact-box">
-            <h4>Email</h4>
+            <h4>{t.contact.email}</h4>
             <p>
               <a href={`mailto:${config.contact.email}`} data-cursor="disable">
                 {config.contact.email}
@@ -70,7 +71,7 @@ const Contact = () => {
             </p>
             {config.contact.phone && (
               <>
-                <h4>Phone</h4>
+                <h4>{t.contact.phone}</h4>
                 <p>
                   <a href={`tel:${config.contact.phone}`} data-cursor="disable">
                     {config.contact.phone}
@@ -78,13 +79,13 @@ const Contact = () => {
                 </p>
               </>
             )}
-            <h4>Location</h4>
+            <h4>{t.contact.location}</h4>
             <p>
               <span>{config.social.location}</span>
             </p>
           </div>
           <div className="contact-box">
-            <h4>Social</h4>
+            <h4>{t.contact.social}</h4>
             {config.contact.github && (
               <a
                 href={config.contact.github}
@@ -132,7 +133,7 @@ const Contact = () => {
           </div>
           <div className="contact-box">
             <h2>
-              Designed & developed <br /> by <span>{config.developer.fullName}</span>
+              {t.contact.footer1} <br /> {t.contact.footer2} <span>{config.developer.fullName}</span>
             </h2>
             <h5>
               <MdCopyright /> {new Date().getFullYear()}

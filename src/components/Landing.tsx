@@ -1,8 +1,9 @@
 import { PropsWithChildren } from "react";
 import "./styles/Landing.css";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 
 const Landing = ({ children }: PropsWithChildren) => {
+  const { config, t } = useI18n();
   // Hero chỉ hiển thị tên gọi (2 âm cuối), VD "Nguyễn Minh Phương" -> "Minh Phương"
   const nameParts = config.developer.fullName.trim().split(/\s+/);
   const heroParts = nameParts.slice(-2);
@@ -14,13 +15,13 @@ const Landing = ({ children }: PropsWithChildren) => {
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
           <div className="landing-intro">
-            <h2>Hello! I'm</h2>
+            <h2>{t.hero.greeting}</h2>
             <h1>
               {firstName.toUpperCase()} {lastName && <span>{lastName.toUpperCase()}</span>}
             </h1>
           </div>
           <div className="landing-info">
-            <h3>I'm a</h3>
+            <h3>{t.hero.intro}</h3>
             <h2 className="landing-info-h2">{config.developer.title}</h2>
           </div>
 

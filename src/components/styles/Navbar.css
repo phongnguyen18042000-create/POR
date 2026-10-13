@@ -83,6 +83,34 @@
     }
 }
 
+.lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: #888;
+    user-select: none;
+    letter-spacing: 0.5px;
+}
+
+.lang-switch span {
+    transition: color 0.2s ease;
+}
+
+.lang-switch span:not(.lang-sep):hover {
+    color: #eae5ec;
+}
+
+.lang-switch .lang-on {
+    color: var(--accentColor);
+    font-weight: 700;
+}
+
+.lang-switch .lang-sep {
+    color: #555;
+    cursor: default;
+}
+
 /* Mobile: thanh bar ngang gọn, có nền tối + blur để chữ nội dung không chồng lên */
 @media only screen and (max-width: 499px) {
     .header {
@@ -90,8 +118,9 @@
         max-width: 100%;
         left: 0;
         transform: none;
-        padding: 12px 16px;
+        padding: 11px 12px;
         align-items: center;
+        gap: 8px;
         background: rgba(11, 8, 12, 0.72);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
@@ -101,8 +130,9 @@
     .header ul {
         flex-direction: row;
         align-items: center;
-        column-gap: 16px;
-        font-size: 11px;
+        column-gap: 11px;
+        font-size: 10px;
+        flex-shrink: 0;
     }
 
     .header ul li {
@@ -111,7 +141,14 @@
 
     .typing-logo {
         min-width: 0;
-        font-size: 12px;
+        font-size: 10.5px;
+        overflow: hidden;
+        text-overflow: clip;
+        white-space: nowrap;
+    }
+
+    .lang-switch {
+        gap: 3px;
     }
 }
 

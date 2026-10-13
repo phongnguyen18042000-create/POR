@@ -4,11 +4,13 @@ import HoverLinks from "./HoverLinks";
 import { gsap } from "gsap";
 import Lenis from "lenis";
 import "./styles/Navbar.css";
+import { useI18n } from "../i18n";
 
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
 
 const Navbar = () => {
+  const { t, lang, setLang } = useI18n();
   const [typedText, setTypedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const fullText = "minhphuong.creative";
@@ -115,18 +117,33 @@ const Navbar = () => {
         <ul>
           <li>
             <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
+              <HoverLinks text={t.nav.about} />
             </a>
           </li>
           <li>
             <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
+              <HoverLinks text={t.nav.work} />
             </a>
           </li>
           <li>
             <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
+              <HoverLinks text={t.nav.contact} />
             </a>
+          </li>
+          <li className="lang-switch" data-cursor="disable">
+            <span
+              className={lang === "vi" ? "lang-on" : ""}
+              onClick={() => setLang("vi")}
+            >
+              VI
+            </span>
+            <span className="lang-sep">/</span>
+            <span
+              className={lang === "en" ? "lang-on" : ""}
+              onClick={() => setLang("en")}
+            >
+              EN
+            </span>
           </li>
         </ul>
       </div>

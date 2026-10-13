@@ -8,10 +8,12 @@ const MainContainer = lazy(() => import("./components/MainContainer"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
 const Play = lazy(() => import("./pages/Play"));
 import { LoadingProvider } from "./context/LoadingProvider";
+import { LanguageProvider } from "./i18n";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <LanguageProvider>
       <Routes>
         <Route
           path="/"
@@ -45,6 +47,7 @@ const App = () => {
         />
       </Routes>
       <Analytics />
+      </LanguageProvider>
     </BrowserRouter>
   );
 };

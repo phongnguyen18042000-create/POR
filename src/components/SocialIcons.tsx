@@ -6,9 +6,10 @@ import {
 } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { useEffect } from "react";
-import { config } from "../config";
+import { useI18n } from "../i18n";
 
 const SocialIcons = () => {
+  const { config } = useI18n();
   useEffect(() => {
     const social = document.getElementById("social") as HTMLElement;
 

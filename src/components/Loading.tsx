@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
+import { useI18n } from "../i18n";
 
 import Marquee from "react-fast-marquee";
 
 const Loading = ({ percent }: { percent: number }) => {
   const { setIsLoading } = useLoading();
+  const { setLang } = useI18n();
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [langPicked, setLangPicked] = useState(false);
+  const [pickedLang, setPickedLang] = useState<"vi" | "en" | null>(null);
+
+  const pickLang = (l: "vi" | "en") => {
+    setLang(l);
+    setPickedLang(l);
+    setLangPicked(true);
+  };
 
   // Typing effect for the logo
   const [typedText, setTypedText] = useState("");
@@ -50,7 +60,7 @@ const Loading = ({ percent }: { percent: number }) => {
   // Vào trang bằng 1 cú click — cú click này đồng thời mở khóa âm thanh
   // (trình duyệt bắt buộc có tương tác thật thì video mới được phát tiếng).
   const handleEnter = () => {
-    if (loaded && !isLoaded) setIsLoaded(true);
+    if (loaded && langPicked && !isLoaded) setIsLoaded(true);
   };
 
   useEffect(() => {
@@ -101,13 +111,30 @@ const Loading = ({ percent }: { percent: number }) => {
             <span>Content Creator</span> <span>Storyteller</span>
           </Marquee>
         </div>
+
+        {loaded && !langPicked && (
+          <div className="lang-select">
+            <div className="lang-select-label">Chọn ngôn ngữ · Choose language</div>
+            <div className="lang-select-btns">
+              <button className="lang-opt" data-cursor="disable" onClick={() => pickLang("vi")}>
+                <span>Tiếng Việt</span>
+                <em>VI</em>
+              </button>
+              <button className="lang-opt" data-cursor="disable" onClick={() => pickLang("en")}>
+                <span>English</span>
+                <em>EN</em>
+              </button>
+            </div>
+          </div>
+        )}
+
         <div
-          className={`loading-wrap ${clicked && "loading-clicked"} ${loaded && "loading-ready"}`}
+          className={`loading-wrap ${clicked && "loading-clicked"} ${loaded && langPicked && "loading-ready"}`}
           onMouseMove={(e) => handleMouseMove(e)}
           onClick={handleEnter}
         >
           <div className="loading-hover"></div>
-          <div className={`loading-button ${loaded && "loading-complete"}`}>
+          <div className={`loading-button ${loaded && langPicked && "loading-complete"}`}>
             <div className="loading-container">
               <div className="loading-content">
                 <div className="loading-content-in">
@@ -117,7 +144,7 @@ const Loading = ({ percent }: { percent: number }) => {
               <div className="loading-box"></div>
             </div>
             <div className="loading-content2">
-              <span>Click to enter</span>
+              <span>{pickedLang === "vi" ? "BẮT ĐẦU" : "ENTER"}</span>
             </div>
           </div>
         </div>
