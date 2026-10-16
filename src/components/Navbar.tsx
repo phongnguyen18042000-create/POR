@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import Lenis from "lenis";
 import "./styles/Navbar.css";
 import { useI18n } from "../i18n";
+import { leaveTo } from "../utils/pageTransition";
 
 gsap.registerPlugin(ScrollTrigger);
 export let lenis: Lenis | null = null;
@@ -128,7 +129,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="/cv/index.html" target="_blank" rel="noopener noreferrer">
+            <a href="/cv/index.html" onClick={leaveTo}>
               <HoverLinks text={t.nav.cv} />
             </a>
           </li>

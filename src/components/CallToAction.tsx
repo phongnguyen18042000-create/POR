@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useI18n } from "../i18n";
+import { leaveTo } from "../utils/pageTransition";
 import "./styles/CallToAction.css";
 
 const CallToAction = () => {
-  const { config, t } = useI18n();
+  const { t } = useI18n();
   return (
     <div className="cta-section">
       <div className="cta-buttons">
@@ -12,9 +13,8 @@ const CallToAction = () => {
         </Link>
 
         <a
-          href={config.contact.zalo}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/contact/index.html"
+          onClick={leaveTo}
           className="cta-btn cta-btn-hire"
           data-cursor="disable"
         >

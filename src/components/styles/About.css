@@ -35,7 +35,7 @@
 
 .about-me .highlight {
   display: inline;
-  background: linear-gradient(90deg, #c481ff, #ff6bef);
+  background: linear-gradient(90deg, #ef4444, #ef4444);
   background-size: 100% 5px;
   background-repeat: no-repeat;
   background-position: 0 100%;
@@ -51,7 +51,7 @@
 }
 
 .about-me .highlight:hover {
-  background: linear-gradient(90deg, #ff6bef, #c481ff);
+  background: linear-gradient(90deg, #ef4444, #ef4444);
   background-size: 100% 6px;
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);
 }
@@ -107,7 +107,7 @@
 .blob-2 {
   width: 300px;
   height: 300px;
-  background: #ff6bef;
+  background: #ef4444;
   bottom: -50px;
   right: -50px;
 }

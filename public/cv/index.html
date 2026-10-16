@@ -23,6 +23,10 @@
     background: #000; overflow: hidden;
     transition: opacity .8s ease, transform .8s ease;
   }
+  /* Vào trang: hiện dần từ mờ nhoè */
+  @keyframes pageIn { from { opacity: 0; filter: blur(10px); transform: scale(1.03); } to { opacity: 1; filter: none; transform: none; } }
+  .hero { animation: pageIn 1s cubic-bezier(.2, .8, .2, 1) backwards; }
+  @media (prefers-reduced-motion: reduce) { .hero { animation: none; } }
   .hero.leaving { opacity: 0; transform: translateY(-4%); pointer-events: none; }
 
   .particles-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
@@ -345,7 +349,7 @@
     <section class="end reveal">
       <h3>Cùng làm những thước phim<br><span>có cảm xúc</span></h3>
       <p>Cảm ơn anh/chị đã xem hết CV. Rất mong có dịp trao đổi thêm về vị trí Video Creator.</p>
-      <a class="btn-primary" href="https://zalo.me/0903601944" target="_blank" rel="noopener"><span>Liên hệ ngay</span></a>
+      <a class="btn-primary" href="/contact/index.html"><span>Liên hệ ngay</span></a>
       <div class="contact-row">
         <a href="tel:0903601944">0903 601 944</a>
         <a href="mailto:phuongnguyen.18042000@gmail.com">phuongnguyen.18042000@gmail.com</a>
@@ -535,6 +539,16 @@
     setTimeout(() => { showCV(); history.replaceState(null, '', '#cv'); }, 800);
   });
   if (location.hash === '#cv') showCV();
+
+  /* Bấm "Liên hệ ngay" → trang CV mờ dần rồi mới chuyển sang trang Contact */
+  document.querySelectorAll('a.btn-primary[href^="/contact"]').forEach(a => a.addEventListener('click', e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    e.preventDefault();
+    cv.style.transition = 'opacity .55s ease, filter .55s ease, transform .55s ease';
+    cv.style.opacity = '0'; cv.style.filter = 'blur(10px)'; cv.style.transform = 'scale(.97)';
+    setTimeout(() => { location.href = a.href; }, 550);
+  }));
+  addEventListener('pageshow', e => { if (e.persisted) { cv.style.opacity = ''; cv.style.filter = ''; cv.style.transform = ''; } });
 })();
 </script>
 </body>

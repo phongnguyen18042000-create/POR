@@ -58,14 +58,14 @@
     align-items: center;
     min-width: 120px;
     /* Prevent layout shift */
-    color: #eae5ec;
+    color: #fee2e2;
 }
 
 .cursor {
     display: inline-block;
     width: 2px;
     height: 1em;
-    background-color: #6100ff;
+    background-color: #991b1b;
     /* Deep purple matching your theme */
     margin-left: 2px;
     animation: blink 1s step-end infinite;
@@ -98,7 +98,7 @@
 }
 
 .lang-switch span:not(.lang-sep):hover {
-    color: #eae5ec;
+    color: #fee2e2;
 }
 
 .lang-switch .lang-on {
@@ -121,7 +121,7 @@
         padding: 11px 12px;
         align-items: center;
         gap: 8px;
-        background: rgba(11, 8, 12, 0.72);
+        background: rgba(0, 0, 0, 0.72);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -136,7 +136,7 @@
     }
 
     .header ul li {
-        color: #eae5ec;
+        color: #fee2e2;
     }
 
     .typing-logo {
@@ -164,7 +164,7 @@
     }
 
     .header ul li {
-        color: #eae5ec;
+        color: #fee2e2;
     }
 
     .navbar-title {

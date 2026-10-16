@@ -41,7 +41,7 @@ export const ui = {
       footer1: "Thiết kế và phát triển",
       footer2: "bởi",
     },
-    cta: { play: "Chơi cùng tôi", hire: "Hợp tác ngay" },
+    cta: { play: "Chơi cùng tôi", hire: "Liên hệ" },
     myworks: {
       back: "← Quay lại trang chủ",
       allTitle: "Tất cả",
@@ -79,7 +79,7 @@ export const ui = {
       footer1: "Designed & developed",
       footer2: "by",
     },
-    cta: { play: "Play with me", hire: "Let's collaborate" },
+    cta: { play: "Play with me", hire: "Contact me" },
     myworks: {
       back: "← Back to home",
       allTitle: "All",

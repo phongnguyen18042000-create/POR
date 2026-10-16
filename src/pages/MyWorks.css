@@ -63,7 +63,7 @@
 .myworks-card:hover {
   transform: translateY(-10px);
   border-color: var(--accentColor);
-  box-shadow: 0 20px 40px rgba(194, 164, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(248, 113, 113, 0.15);
 }
 
 .myworks-card-number {
@@ -157,14 +157,14 @@
 }
 
 .myworks-link-demo {
-  background: linear-gradient(135deg, #c2a4ff 0%, #8b5cf6 100%);
-  color: #0a0a14;
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+  color: #0a0505;
   border-color: transparent;
 }
 
 .myworks-link-demo:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
 }
 
 /* Responsive */

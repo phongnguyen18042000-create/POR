@@ -1,4 +1,4 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import { MdCopyright } from "react-icons/md";
 import "./styles/Contact.css";
 import { useI18n } from "../i18n";
 import gsap from "gsap";
@@ -62,75 +62,6 @@ const Contact = () => {
       <div className="contact-container">
         <h3>{config.developer.fullName}</h3>
         <div className="contact-flex">
-          <div className="contact-box">
-            <h4>{t.contact.email}</h4>
-            <p>
-              <a href={`mailto:${config.contact.email}`} data-cursor="disable">
-                {config.contact.email}
-              </a>
-            </p>
-            {config.contact.phone && (
-              <>
-                <h4>{t.contact.phone}</h4>
-                <p>
-                  <a href={`tel:${config.contact.phone}`} data-cursor="disable">
-                    {config.contact.phone}
-                  </a>
-                </p>
-              </>
-            )}
-            <h4>{t.contact.location}</h4>
-            <p>
-              <span>{config.social.location}</span>
-            </p>
-          </div>
-          <div className="contact-box">
-            <h4>{t.contact.social}</h4>
-            {config.contact.github && (
-              <a
-                href={config.contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="disable"
-                className="contact-social"
-              >
-                Github <MdArrowOutward />
-              </a>
-            )}
-            {config.contact.facebook && (
-              <a
-                href={config.contact.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="disable"
-                className="contact-social"
-              >
-                Facebook <MdArrowOutward />
-              </a>
-            )}
-            {config.contact.instagram && (
-              <a
-                href={config.contact.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="disable"
-                className="contact-social"
-              >
-                Instagram <MdArrowOutward />
-              </a>
-            )}
-            {config.contact.youtube && (
-              <a
-                href={config.contact.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="disable"
-                className="contact-social"
-              >
-                YouTube <MdArrowOutward />
-              </a>
-            )}
-          </div>
           <div className="contact-box">
             <h2>
               {t.contact.footer1} <br /> {t.contact.footer2} <span>{config.developer.fullName}</span>

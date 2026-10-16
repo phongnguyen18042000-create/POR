@@ -12,7 +12,7 @@ export function initialFX() {
   document.getElementsByTagName("main")[0].classList.add("main-active");
 
   gsap.to("body", {
-    backgroundColor: "#0b080c",
+    backgroundColor: "#000000",
     duration: 0.5,
     delay: 1,
   });
