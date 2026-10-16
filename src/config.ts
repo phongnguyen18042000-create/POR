@@ -165,6 +165,7 @@ export const configEN = {
     contact: {
         email: "phuongnguyen.18042000@gmail.com",
         phone: "0903601944",
+        zalo: "https://zalo.me/0903601944",
         github: "",
         linkedin: "",
         twitter: "",

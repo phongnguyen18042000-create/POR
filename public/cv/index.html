@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV Nguyễn Minh Phương</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;200;300;400;500;900&display=swap" rel="stylesheet">
+<style>
+  /* Màu theo component ParticleHero (Tailwind red/orange) */
+  :root {
+    --red-100: #fee2e2; --red-200: #fecaca; --red-300: #fca5a5; --red-400: #f87171;
+    --red-500: #ef4444; --red-600: #dc2626; --red-800: #991b1b; --red-900: #7f1d1d;
+    --orange-600: #ea580c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #000; color: #fff; font-family: "Be Vietnam Pro", system-ui, sans-serif; }
+  body { overflow-x: hidden; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative; width: 100%; min-height: 100vh; min-height: 100svh;
+    background: #000; overflow: hidden;
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .hero.leaving { opacity: 0; transform: translateY(-4%); pointer-events: none; }
+
+  .particles-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .particles { position: relative; }
+  .particle { position: absolute; border-radius: 9999px; will-change: transform; }
+
+  .content {
+    position: relative; z-index: 10; min-height: 100vh; min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 0 24px; text-align: center;
+  }
+  .inner { max-width: 72rem; margin: 0 auto; }
+
+  h1 {
+    font-weight: 900; letter-spacing: -0.05em; line-height: 0.85; margin-bottom: 2rem;
+    font-size: clamp(3.4rem, 12vw, 11rem);
+  }
+  h1 span {
+    background: linear-gradient(to bottom, var(--red-300), var(--red-500), var(--red-800));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 25px 25px rgba(0,0,0,.15));
+    display: inline-block; padding: 0 0.04em 0.08em;
+  }
+  h2 {
+    font-weight: 200; text-transform: uppercase; letter-spacing: 0.2em;
+    color: rgba(254, 202, 202, 0.9);
+    font-size: clamp(1.1rem, 3.2vw, 3rem);
+  }
+  .rule { width: 6rem; height: 1px; margin: 1rem auto 0; background: linear-gradient(to right, transparent, var(--red-400), transparent); }
+  .title-block { margin-bottom: 4rem; }
+
+  .desc {
+    margin: 0 auto 5rem; max-width: 48rem;
+    font-weight: 300; line-height: 1.65; color: rgba(254, 226, 226, 0.6);
+    font-size: clamp(1rem, 1.6vw, 1.5rem);
+  }
+
+  .cta { display: flex; flex-direction: column; gap: 2rem; }
+  .btn-primary {
+    position: relative; overflow: hidden; cursor: pointer;
+    padding: 1.5rem 3rem; background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.3); color: var(--red-200);
+    font: 500 1.125rem/1 "Be Vietnam Pro", sans-serif; letter-spacing: 0.05em; text-transform: uppercase;
+    transition: all .5s; align-self: center;
+  }
+  .btn-primary:hover { border-color: var(--red-400); color: #fff; }
+  .btn-primary span { position: relative; z-index: 1; }
+  .btn-primary::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(220,38,38,0), rgba(239,68,68,.2), rgba(220,38,38,0));
+    transform: translateX(-100%); transition: transform 1s;
+  }
+  .btn-primary:hover::after { transform: translateX(100%); }
+
+  .hint {
+    display: flex; align-items: center; justify-content: center; gap: 1.5rem;
+    color: rgba(248, 113, 113, 0.4); font-size: .875rem; text-transform: uppercase; letter-spacing: 0.3em;
+  }
+  .hint i { width: 3rem; height: 1px; background: linear-gradient(to right, transparent, rgba(239,68,68,.3)); }
+  .hint i:last-child { background: linear-gradient(to left, transparent, rgba(239,68,68,.3)); }
+  .hint span { animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+  @keyframes pulse { 50% { opacity: .5; } }
+
+  .ambient { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .ambient div { position: absolute; border-radius: 9999px; filter: blur(64px); animation: pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+  .amb1 { top: 5rem; left: 5rem; width: 20rem; height: 20rem; background: rgba(220,38,38,.05); }
+  .amb2 { bottom: 5rem; right: 5rem; width: 24rem; height: 24rem; background: rgba(234,88,12,.05); animation-delay: 2s !important; }
+  .amb3 { top: 50%; left: 50%; width: 120vh; height: 120vh; transform: translate(-50%,-50%); background: radial-gradient(rgba(127,29,29,.03), transparent 70%); filter: none !important; animation: none !important; }
+
+  /* ---------- PHẦN CV ---------- */
+  .cv { display: none; opacity: 0; transition: opacity .8s ease; position: relative; }
+  .cv.show { display: block; }
+  .cv.visible { opacity: 1; }
+  .cv::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(60rem 40rem at 85% -10%, rgba(220,38,38,.12), transparent 60%),
+                radial-gradient(50rem 40rem at -10% 110%, rgba(234,88,12,.06), transparent 60%);
+  }
+  #ripple { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; display: block; }
+  .wrap { position: relative; z-index: 1; max-width: 68rem; margin: 0 auto; padding: 0 24px; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* Header */
+  .cv-head { display: grid; grid-template-columns: 17rem 1fr; grid-template-rows: auto auto; column-gap: 4rem; padding: 14vh 0 6rem; }
+  .cv-photo { grid-row: 1 / 3; align-self: center; }
+  .cv-title { align-self: end; }
+  .cv-photo { position: relative; aspect-ratio: 3 / 4; overflow: hidden; }
+  .cv-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 20%; filter: grayscale(1) contrast(1.05); }
+  .cv-photo::after { content: ""; position: absolute; inset: 0; border: 1px solid rgba(239,68,68,.25); }
+  .eyebrow { font-size: .75rem; letter-spacing: .35em; text-transform: uppercase; color: rgba(248,113,113,.7); }
+  .cv-name { font-weight: 900; letter-spacing: -0.04em; line-height: .95; margin: 1rem 0 1.2rem; font-size: clamp(2.6rem, 6.5vw, 5.4rem); }
+  .cv-name span { background: linear-gradient(to bottom, var(--red-300), var(--red-500), var(--red-800)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .cv-role { font-weight: 200; letter-spacing: .2em; text-transform: uppercase; color: rgba(254,202,202,.9); font-size: clamp(.95rem, 1.6vw, 1.2rem); }
+  .cv-sum { margin-top: 1.6rem; max-width: 40rem; font-weight: 300; line-height: 1.75; color: rgba(254,226,226,.65); font-size: 1.02rem; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-top: 2rem; font-size: .9rem; }
+  .contact-row a { color: rgba(254,226,226,.85); text-decoration: none; border-bottom: 1px solid rgba(239,68,68,.35); padding-bottom: 2px; transition: color .3s, border-color .3s; }
+  .contact-row a:hover { color: #fff; border-color: var(--red-400); }
+
+  /* Section */
+  .sec { padding: 4.5rem 0; border-top: 1px solid rgba(239,68,68,.15); }
+  .sec-head { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 3rem; }
+  .sec-head b { font-weight: 300; font-size: .8rem; letter-spacing: .2em; color: var(--red-500); }
+  .sec-head h3 { font-weight: 200; text-transform: uppercase; letter-spacing: .22em; font-size: clamp(1.2rem, 2.4vw, 1.7rem); color: rgba(254,202,202,.92); }
+
+  /* Kinh nghiệm */
+  .job { display: grid; grid-template-columns: 11rem 1fr; gap: 2.5rem; padding: 1.8rem 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .job:last-child { border-bottom: 0; }
+  .job time { font-size: .85rem; letter-spacing: .1em; color: rgba(248,113,113,.75); padding-top: .25rem; }
+  .job h4 { font-weight: 500; font-size: 1.2rem; color: #fff; }
+  .job .co { font-weight: 300; color: rgba(254,226,226,.5); margin: .25rem 0 .9rem; font-size: .95rem; }
+  .job ul { list-style: none; }
+  .job li { position: relative; padding-left: 1.2rem; font-weight: 300; line-height: 1.7; color: rgba(254,226,226,.72); font-size: .95rem; }
+  .job li::before { content: ""; position: absolute; left: 0; top: .78em; width: .45rem; height: 1px; background: var(--red-500); }
+  .tools { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+  .tools span { font-size: .75rem; padding: .3rem .7rem; border: 1px solid rgba(239,68,68,.22); color: rgba(254,202,202,.75); letter-spacing: .03em; }
+
+  /* Kỹ năng */
+  .skills { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .skill h4 { font-weight: 900; font-size: 1.6rem; letter-spacing: -0.02em; color: #fff; }
+  .skill .sub { font-weight: 300; color: rgba(248,113,113,.8); font-size: .9rem; margin: .2rem 0 1rem; letter-spacing: .05em; }
+  .skill p { font-weight: 300; line-height: 1.75; color: rgba(254,226,226,.68); font-size: .95rem; }
+
+  /* Học vấn + liên hệ cuối */
+  .edu-row { display: grid; grid-template-columns: 11rem 1fr; gap: 2.5rem; }
+  .edu-row time { font-size: .85rem; letter-spacing: .1em; color: rgba(248,113,113,.75); }
+  .edu-row h4 { font-weight: 500; font-size: 1.2rem; }
+  .edu-row p { font-weight: 300; color: rgba(254,226,226,.55); margin-top: .25rem; }
+
+  .end { text-align: center; padding: 7rem 0 6rem; border-top: 1px solid rgba(239,68,68,.15); }
+  .end h3 { font-weight: 900; letter-spacing: -0.03em; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.05; }
+  .end h3 span { background: linear-gradient(to bottom, var(--red-300), var(--red-500), var(--red-800)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .end p { margin: 1.2rem auto 2.4rem; max-width: 32rem; font-weight: 300; line-height: 1.7; color: rgba(254,226,226,.6); }
+  .end .btn-primary { display: inline-block; text-decoration: none; }
+  .end .contact-row { justify-content: center; margin-top: 2.4rem; }
+  .copy { margin-top: 4rem; font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(248,113,113,.3); }
+
+  @media (max-width: 860px) {
+    .cv-head { grid-template-columns: 38% 1fr; gap: 1.8rem; align-items: center; padding-top: 8vh; padding-bottom: 4rem; }
+    .cv-sum { font-size: .92rem; line-height: 1.65; margin-top: 1.1rem; }
+    .contact-row { gap: .5rem 1.1rem; margin-top: 1.4rem; font-size: .82rem; }
+    .job, .edu-row { grid-template-columns: 1fr; gap: .5rem; }
+    .skills { grid-template-columns: 1fr; gap: 2.4rem; }
+  }
+  @media (max-width: 560px) {
+    .cv-head { grid-template-columns: 34% 1fr; gap: 1.1rem; padding-top: 6vh; }
+    .cv-name { margin: .5rem 0 .7rem; }
+    .cv-role { font-size: .72rem; letter-spacing: .14em; }
+    .eyebrow { font-size: .62rem; letter-spacing: .25em; }
+    .cv-photo { grid-row: 1; }
+    .cv-title { align-self: center; }
+    .cv-body { grid-column: 1 / -1; margin-top: .4rem; }
+    .sec { padding: 3.5rem 0; }
+    .sec-head { margin-bottom: 2rem; }
+  }
+
+  @media (max-width: 640px) {
+    .title-block { margin-bottom: 3rem; }
+    .desc { margin-bottom: 3.5rem; }
+    .btn-primary { padding: 1.25rem 2.5rem; font-size: 1rem; }
+    .hint { gap: 1rem; font-size: .75rem; letter-spacing: .2em; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hint span, .ambient div { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero" id="hero">
+  <div class="particles-wrap"><div class="particles" id="particles"></div></div>
+
+  <div class="content">
+    <div class="inner">
+      <div class="title-block">
+        <h1><span>Curriculum Vitae</span></h1>
+        <h2>Marketing &amp; Video Creator</h2>
+        <div class="rule"></div>
+      </div>
+
+      <p class="desc">Cảm ơn HR đã bỏ một chút thời gian vào link, bấm bắt đầu để xem tiếp ạ.</p>
+
+      <div class="cta">
+        <button class="btn-primary" id="start"><span>Bắt đầu</span></button>
+        <div class="hint"><i></i><span>Hover to Interact</span><i></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ambient"><div class="amb1"></div><div class="amb2"></div><div class="amb3"></div></div>
+</section>
+
+<main class="cv" id="cv">
+  <canvas id="ripple" aria-hidden="true"></canvas>
+  <div class="wrap">
+
+    <!-- HEADER -->
+    <header class="cv-head">
+      <div class="cv-photo reveal"><img src="portrait.png" alt="Nguyễn Minh Phương"></div>
+      <div class="cv-title reveal">
+        <div class="eyebrow">Curriculum Vitae</div>
+        <h1 class="cv-name">Nguyễn<br><span>Minh Phương</span></h1>
+        <div class="cv-role">Marketing &amp; Video Creator</div>
+      </div>
+      <div class="cv-body reveal">
+        <p class="cv-sum">
+          Người kể chuyện thương hiệu bằng từng khung hình. Không chọn vùng an toàn, mình cập nhật bản thân mỗi ngày
+          và mang cái đẹp vào từng video — từ lên ý tưởng, kịch bản, quay dựng đến chiến lược content —
+          để tạo ra những thước phim có cảm xúc và kết quả thật cho thương hiệu.
+        </p>
+        <div class="contact-row">
+          <a href="tel:0903601944">0903 601 944</a>
+          <a href="mailto:phuongnguyen.18042000@gmail.com">phuongnguyen.18042000@gmail.com</a>
+          <a href="https://www.facebook.com/Phu0ngMagic/" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/nguyen.mphuogg/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- KINH NGHIỆM -->
+    <section class="sec">
+      <div class="sec-head reveal"><b>01</b><h3>Kinh nghiệm</h3></div>
+
+      <article class="job reveal">
+        <time>2024 — 2026</time>
+        <div>
+          <h4>Video Editor &amp; Content Creative</h4>
+          <div class="co">HUSSIO — Thời trang nam Smart Casual</div>
+          <ul>
+            <li>Sản xuất các campaign Tết 2026, Sơ Mi Chống Nhăn, HUAVIVAN × HUSSIO, Sơ Mi Ba Thế Hệ, Sợi Sóng và Daily Fashion — từ ý tưởng, kịch bản đến hậu kỳ.</li>
+            <li>Edit video quảng cáo, lookbook và content social cho thương hiệu.</li>
+            <li>Nghiên cứu insight, xu hướng thị trường và định hướng content.</li>
+            <li>Phối hợp sản xuất từ tiền kỳ đến hậu kỳ, đảm bảo đúng brand voice.</li>
+          </ul>
+          <div class="tools"><span>Premiere Pro</span><span>After Effects</span><span>CapCut</span><span>DaVinci Resolve</span><span>Photoshop</span></div>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <time>2023 — 2024</time>
+        <div>
+          <h4>Creative — Marketing</h4>
+          <div class="co">Công ty SW</div>
+          <ul>
+            <li>Lên ý tưởng xây dựng thương hiệu cá nhân cho từng khách hàng, biến idea thành sản phẩm thật.</li>
+            <li>Bắt trend, tạo trend và trực tiếp edit clip viral cho khách hàng lẫn công ty.</li>
+            <li>Quản lý quảng cáo; phối hợp KOC/KOL, agency triển khai dự án sự kiện.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <time>2022 — 2023</time>
+        <div>
+          <h4>Marketing</h4>
+          <div class="co">FITMAR Agency</div>
+          <ul>
+            <li>Sáng tạo nội dung và sản xuất video quảng cáo TikTok cho các brand.</li>
+            <li>Xây dựng video ngắn cho CEO và viết kịch bản kênh TikTok.</li>
+            <li>Đề xuất chiến lược marketing, brief editor và hỗ trợ Planner bám timeline.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <time>2021 — 2022</time>
+        <div>
+          <h4>Marketing Inhouse</h4>
+          <div class="co">Khui Beer Garden</div>
+          <ul>
+            <li>Edit clip truyền thông, quảng cáo và clip sự kiện khi có nghệ sĩ.</li>
+            <li>Xây dựng chiến lược đa nền tảng, chạy quảng cáo và remarketing.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job reveal">
+        <time>2020 — 2021</time>
+        <div>
+          <h4>Marketing Social Media</h4>
+          <div class="co">John &amp; Partners</div>
+          <ul>
+            <li>Lên kế hoạch nội dung tuần/tháng, thiết kế poster cho các chương trình đào tạo.</li>
+            <li>Chọn khoảnh khắc từ các buổi coaching để làm video TikTok theo trend.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- KỸ NĂNG -->
+    <section class="sec">
+      <div class="sec-head reveal"><b>02</b><h3>Kỹ năng</h3></div>
+      <div class="skills">
+        <div class="skill reveal">
+          <h4>VIDEOGRAPHER</h4>
+          <div class="sub">Quay &amp; sản xuất video</div>
+          <p>Làm video từ ý tưởng đến hậu kỳ: kịch bản, storyboard, quay và dựng. Thế mạnh ở product film, brand film, lookbook và video ngắn social — chú trọng ánh sáng, nhịp dựng và cảm xúc trong từng khung hình.</p>
+          <div class="tools"><span>Premiere Pro</span><span>After Effects</span><span>DaVinci Resolve</span><span>CapCut</span><span>Photoshop</span><span>Lightroom</span><span>Color Grading</span><span>Motion Graphics</span><span>Sound Design</span></div>
+        </div>
+        <div class="skill reveal">
+          <h4>MARKETING</h4>
+          <div class="sub">Chiến lược content &amp; tăng trưởng</div>
+          <p>Xây chiến lược marketing và content đa nền tảng: nghiên cứu insight, bắt trend, lên kế hoạch nội dung, chạy quảng cáo và làm việc với KOC/KOL. Tập trung vào thương hiệu cá nhân, chuyển đổi và nội dung có khả năng viral.</p>
+          <div class="tools"><span>Content Strategy</span><span>TikTok</span><span>Meta Ads</span><span>Trend Research</span><span>KOC / KOL</span><span>Copywriting</span><span>Personal Branding</span><span>Remarketing</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HỌC VẤN -->
+    <section class="sec">
+      <div class="sec-head reveal"><b>03</b><h3>Học vấn</h3></div>
+      <div class="edu-row reveal">
+        <time>2018 — 2022</time>
+        <div><h4>Đại học HUTECH</h4><p>Chuyên ngành Marketing</p></div>
+      </div>
+    </section>
+
+    <!-- KẾT -->
+    <section class="end reveal">
+      <h3>Cùng làm những thước phim<br><span>có cảm xúc</span></h3>
+      <p>Cảm ơn anh/chị đã xem hết CV. Rất mong có dịp trao đổi thêm về vị trí Video Creator.</p>
+      <a class="btn-primary" href="https://zalo.me/0903601944" target="_blank" rel="noopener"><span>Liên hệ ngay</span></a>
+      <div class="contact-row">
+        <a href="tel:0903601944">0903 601 944</a>
+        <a href="mailto:phuongnguyen.18042000@gmail.com">phuongnguyen.18042000@gmail.com</a>
+      </div>
+      <div class="copy">Nguyễn Minh Phương · TP. Hồ Chí Minh</div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+/* Bản chuyển từ component React ParticleHero (particleCount = 10) sang JS thuần */
+(function () {
+  const rows = 10;
+  const total = rows * rows;
+  const center = Math.floor(rows / 2);
+  const container = document.getElementById('particles');
+  const hero = document.getElementById('hero');
+  container.style.width = rows * 1.8 + 'rem';
+  container.style.height = rows * 1.8 + 'rem';
+
+  const parts = [];
+  for (let i = 0; i < total; i++) {
+    const row = Math.floor(i / rows), col = i % rows;
+    const d = Math.hypot(row - center, col - center);
+    const scale = Math.max(0.1, 1.2 - d * 0.12);
+    const opacity = Math.max(0.05, 1 - d * 0.1);
+    const lightness = Math.max(15, 75 - d * 6);
+    const glow = Math.max(0.5, 6 - d * 0.5);
+    const el = document.createElement('div');
+    el.className = 'particle';
+    el.style.cssText = `
+      width:.4rem;height:.4rem;left:${col * 1.8}rem;top:${row * 1.8}rem;
+      transform:scale(${scale});opacity:${opacity};
+      background:hsl(4,85%,${lightness}%);
+      box-shadow:0 0 ${glow * 0.2}rem 0 hsl(4,85%,60%);
+      mix-blend-mode:screen;z-index:${Math.round(total - d * 5)};
+      transition:transform ${120 + d * 20}ms cubic-bezier(.25,.46,.45,.94);`;
+    container.appendChild(el);
+    parts.push({ el, d, scale, damp: Math.max(0.3, 1 - d * 0.08) });
+  }
+
+  let cursor = { x: 0, y: 0 }, staticCursor = { x: 0, y: 0 };
+  let autoMode = true, staticAnim = false;
+  let start = Date.now(), lastMove = Date.now(), staticTimer;
+
+  function apply() {
+    const c = { x: cursor.x, y: cursor.y };
+    parts.forEach(p => setTimeout(() => {
+      p.el.style.transform = `translate(${c.x * p.damp}px, ${c.y * p.damp}px) scale(${p.scale})`;
+    }, p.d * 8));
+  }
+
+  function tick() {
+    const t = (Date.now() - start) * 0.001;
+    if (autoMode) {
+      cursor = {
+        x: Math.sin(t * 0.3) * 200 + Math.sin(t * 0.17) * 100,
+        y: Math.cos(t * 0.2) * 150 + Math.cos(t * 0.23) * 80
+      };
+      apply();
+    } else if (staticAnim) {
+      const since = Date.now() - lastMove;
+      if (since > 200) {
+        const k = Math.min((since - 200) / 1000, 1);
+        cursor = { x: staticCursor.x + Math.sin(t * 1.5) * 20 * k, y: staticCursor.y + Math.cos(t * 1.2) * 16 * k };
+        apply();
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  function onMove(e) {
+    const ev = e.touches ? e.touches[0] : e;
+    cursor = { x: (ev.clientX - innerWidth / 2) * 0.8, y: (ev.clientY - innerHeight / 2) * 0.8 };
+    staticCursor = cursor;
+    autoMode = false; staticAnim = false; lastMove = Date.now();
+    apply();
+    clearTimeout(staticTimer);
+    staticTimer = setTimeout(() => { staticAnim = true; }, 500);
+    setTimeout(() => {
+      if (Date.now() - lastMove >= 4000) { autoMode = true; staticAnim = false; start = Date.now(); }
+    }, 4000);
+  }
+  hero.addEventListener('mousemove', onMove);
+  hero.addEventListener('touchmove', onMove, { passive: true });
+
+  /* Hiện dần từng khối khi cuộn tới */
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  }), { threshold: 0.12 });
+
+  const cv = document.getElementById('cv');
+  function showCV() {
+    hero.style.display = 'none';
+    cv.classList.add('show');
+    requestAnimationFrame(() => cv.classList.add('visible'));
+    scrollTo(0, 0);
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    startRipple();
+  }
+
+  /* ---------- Nền ripple: lưới đường dọc uốn theo noise + cong về phía con trỏ ---------- */
+  function startRipple() {
+    const canvas = document.getElementById('ripple');
+    const ctx = canvas.getContext('2d');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W, H, dpr, spacing, step;
+
+    // value noise 3D gọn nhẹ
+    const perm = new Uint8Array(512);
+    for (let i = 0; i < 256; i++) perm[i] = i;
+    for (let i = 255; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [perm[i], perm[j]] = [perm[j], perm[i]]; }
+    for (let i = 0; i < 256; i++) perm[i + 256] = perm[i];
+    const fade = t => t * t * (3 - 2 * t);
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const h = (x, y, z) => perm[perm[perm[x & 255] + (y & 255)] + (z & 255)] / 255;
+    function noise(x, y, z) {
+      const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z);
+      const xf = fade(x - xi), yf = fade(y - yi), zf = fade(z - zi);
+      const a = lerp(lerp(h(xi, yi, zi), h(xi + 1, yi, zi), xf), lerp(h(xi, yi + 1, zi), h(xi + 1, yi + 1, zi), xf), yf);
+      const b = lerp(lerp(h(xi, yi, zi + 1), h(xi + 1, yi, zi + 1), xf), lerp(h(xi, yi + 1, zi + 1), h(xi + 1, yi + 1, zi + 1), xf), yf);
+      return lerp(a, b, zf) * 2 - 1;
+    }
+
+    function resize() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      W = innerWidth; H = innerHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      spacing = W < 640 ? 9 : 8;
+      step = 10;
+    }
+    resize();
+    addEventListener('resize', resize);
+
+    const mouse = { x: -9999, y: -9999, tx: -9999, ty: -9999, on: false };
+    addEventListener('pointermove', e => { mouse.tx = e.clientX; mouse.ty = e.clientY; if (!mouse.on) { mouse.x = e.clientX; mouse.y = e.clientY; mouse.on = true; } });
+    document.addEventListener('pointerleave', () => { mouse.on = false; });
+
+    const t0 = performance.now();
+    function frame(now) {
+      const t = reduce ? 0 : (now - t0) * 0.00016;
+      mouse.x += (mouse.tx - mouse.x) * 0.12;
+      mouse.y += (mouse.ty - mouse.y) * 0.12;
+      const R = Math.min(W, H) * 0.28, R2 = R * R;
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.lineWidth = 1;
+      for (let x0 = -spacing * 4; x0 <= W + spacing * 4; x0 += spacing) {
+        ctx.beginPath();
+        let hot = 0;
+        for (let y = -step; y <= H + step; y += step) {
+          let dx = noise(x0 * 0.004, y * 0.0028, t) * 70 + noise(x0 * 0.011, y * 0.008, t * 1.6) * 18;
+          if (mouse.on) {
+            const mx = mouse.x - x0, my = mouse.y - y, d2 = mx * mx + my * my;
+            if (d2 < R2 * 4) {
+              const f = Math.exp(-d2 / R2);
+              dx += mx * 0.55 * f;
+              hot = Math.max(hot, f);
+            }
+          }
+          y === -step ? ctx.moveTo(x0 + dx, y) : ctx.lineTo(x0 + dx, y);
+        }
+        const a = 0.13 + hot * 0.4;
+        ctx.strokeStyle = `rgba(248, 113, 113, ${a.toFixed(3)})`;
+        ctx.stroke();
+      }
+
+      if (mouse.on) {
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, 4, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(254, 202, 202, 0.9)';
+        ctx.shadowColor = 'rgba(239, 68, 68, 0.9)'; ctx.shadowBlur = 14;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* Bấm "Bắt đầu" → ẩn hero, hiện phần CV. Link có #cv thì vào thẳng CV */
+  document.getElementById('start').addEventListener('click', () => {
+    hero.classList.add('leaving');
+    setTimeout(() => { showCV(); history.replaceState(null, '', '#cv'); }, 800);
+  });
+  if (location.hash === '#cv') showCV();
+})();
+</script>
+</body>
+</html>

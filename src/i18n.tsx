@@ -13,7 +13,7 @@ export type Lang = "vi" | "en";
 // UI labels (hardcoded text in components) for both languages
 export const ui = {
   vi: {
-    nav: { about: "VỀ TÔI", work: "DỰ ÁN", contact: "LIÊN HỆ" },
+    nav: { about: "VỀ TÔI", work: "DỰ ÁN", cv: "CV", contact: "LIÊN HỆ" },
     hero: { greeting: "Xin chào! Tôi là", intro: "Là một" },
     loading: { choose: "Chọn ngôn ngữ", loading: "Đang tải", enter: "BẮT ĐẦU" },
     whatido: { skills: "Kỹ năng & công cụ", detail: "Bấm để xem chi tiết" },
@@ -51,7 +51,7 @@ export const ui = {
     },
   },
   en: {
-    nav: { about: "ABOUT", work: "WORK", contact: "CONTACT" },
+    nav: { about: "ABOUT", work: "WORK", cv: "CV", contact: "CONTACT" },
     hero: { greeting: "Hello! I'm", intro: "I'm a" },
     loading: { choose: "Choose language", loading: "Loading", enter: "ENTER" },
     whatido: { skills: "Skills & tools", detail: "Tap to see details" },

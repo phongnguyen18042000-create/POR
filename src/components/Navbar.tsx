@@ -73,6 +73,8 @@ const Navbar = () => {
     let links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
       let element = elem as HTMLAnchorElement;
+      // Link không có data-href (vd: CV) thì để trình duyệt mở bình thường
+      if (!element.getAttribute("data-href")) return;
       element.addEventListener("click", (e) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
@@ -123,6 +125,11 @@ const Navbar = () => {
           <li>
             <a data-href="#work" href="#work">
               <HoverLinks text={t.nav.work} />
+            </a>
+          </li>
+          <li>
+            <a href="/cv/index.html" target="_blank" rel="noopener noreferrer">
+              <HoverLinks text={t.nav.cv} />
             </a>
           </li>
           <li>

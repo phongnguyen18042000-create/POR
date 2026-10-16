@@ -12,7 +12,7 @@ const CallToAction = () => {
         </Link>
 
         <a
-          href={config.contact.facebook}
+          href={config.contact.zalo}
           target="_blank"
           rel="noopener noreferrer"
           className="cta-btn cta-btn-hire"
